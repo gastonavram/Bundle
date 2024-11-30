@@ -1,27 +1,12 @@
 :root {
-  /* --black: #191717; */
-  /* --black: #4b4b4b; */
   --black: #000000;
-  --gray: #a0a0a0;
   --gray: #cccccc;
   --white: #ffffff;
   --mainColor: #ffc200;
-  --secondColor: #25b0e4;
-  --htmlColor: #f1f4f8;
-
-  /* --fontOne: "Oswald", sans-serif;
-  --fontTwo: "Open Sans", sans-serif; */
-
-  --textXL: 6rem;
-  --textLG: 3rem;
-  --textMD: 16px;
-  --textSM: 14.6px;
-  --textXS: 12px;
 
   --transition: all 0.3s ease;
 }
 
-/* font open sans */
 /* Thin */
 @font-face {
   font-family: "Geist";
@@ -100,7 +85,6 @@ html {
   font-size: 62.5%; /* 1rem = 10px */
   scroll-behavior: smooth;
   background-color: var(--black);
-  /* background-color: var(--white); */
   cursor: url("../img/cursor2.png"), auto;
 }
 
@@ -205,7 +189,6 @@ header img.logo {
 }
 
 /* clients */
-
 .clients h2 {
   text-align: left;
   font-size: 20px;
@@ -328,7 +311,6 @@ header img.logo {
   background: #191919;
   padding: 30px 0px;
   transition: var(--transition);
-  /* transition: 0.15s all ease; */
 }
 
 .who-are .team .member img {
@@ -365,7 +347,10 @@ header img.logo {
 }
 
 /* projects */
-.projects {
+.projects .subtitle {
+  text-align: initial;
+  font-size: 16px;
+  color: var(--gray);
 }
 
 .projects .content {
@@ -406,8 +391,6 @@ header img.logo {
 .projects .content .img5 {
   max-height: 250px;
 }
-
-/************************************************************************/
 
 /*GALLERY ONE*/
 .gallery {
@@ -469,23 +452,27 @@ header img.logo {
   -webkit-text-stroke: thin;
 }
 
-/*****************************************************************************/
 /* testimonials */
 @keyframes slide {
   from {
+    -webkit-transform: translateX(0px);
     transform: translateX(0px);
   }
   to {
+    -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
   }
 }
 
 .testimonials .content {
   overflow: hidden;
-  margin-top: 30px;
-  white-space: nowrap;
   position: relative;
-  /* background: rgb(206, 130, 32); */
+  white-space: nowrap;
+  margin-top: 30px;
+  /* agregue esto */
+  width: 100%;
+  max-width: 100%;
+  display: flex;
 }
 
 .testimonials .content::before,
@@ -511,22 +498,34 @@ header img.logo {
 .testimonials .content:hover .logos-slide {
   animation-play-state: paused;
 }
+/* agregue esto */
+.testimonials .content:active .logos-slide {
+  animation-play-state: paused;
+}
 
 .testimonials .logos-slide {
-  display: inline-block;
-  animation: 70s slide infinite linear;
+  /* display: inline-block; */
+  animation: 55s slide infinite linear;
+  /* agregue esto */
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
 .logos-slide article {
-  display: inline-block;
-  width: 600px;
+  /* display: inline-block; */
+  display: inline-flex; /* Cambia de inline-block a inline-flex */
+  flex-direction: column; /* Garantizar flujo vertical interno */
+  width: 500px;
   padding: 10px;
   margin: 0 5px;
   color: var(--white);
+  box-sizing: border-box; /* Para evitar desbordes por padding */
 }
 
 .first-div {
-  display: flex;
+  /* display: flex;  */
+  display: inline-flex;
   align-items: center;
   gap: 20px;
 }
@@ -539,6 +538,9 @@ article .aster {
 .content-son {
   font-size: 16px;
   font-weight: 100;
+  /* agregue esto */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .content-son .content-baby {
@@ -560,9 +562,12 @@ article .aster {
   border-radius: 5px;
   text-align: initial;
   margin-top: 10px;
+  white-space: normal; /* Permitir saltos de línea */
+  word-wrap: break-word; /* Forzar saltos si hay palabras largas */
+  overflow-wrap: break-word; /* Compatibilidad adicional */
+  display: block; /* Asegurar que los párrafos sean bloques */
 }
 
-/*****************************************************************/
 /* how-work */
 .how-work .content {
   margin-top: 30px;
@@ -639,11 +644,6 @@ article .aster {
   }
 
   /**/
-  .testimonials .logos-slide img {
-    max-height: 150px;
-  }
-
-  /**/
   .how-work .content {
     font-size: 23px;
   }
@@ -688,10 +688,6 @@ article .aster {
   .who-are .team .member img {
     width: 170px;
     height: 170px;
-  }
-  /**/
-  .testimonials .logos-slide img {
-    max-height: 130px;
   }
 
   /**/
@@ -753,14 +749,22 @@ article .aster {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /**/
-  .testimonials .logos-slide img {
-    max-height: 120px;
-  }
-
   .testimonials .content::before,
   .testimonials .content::after {
     width: 10px;
+  }
+
+  .logos-slide article {
+    width: 420px;
+  }
+
+  .content-son .content-baby img {
+    height: 12px;
+    margin-top: 3px;
+  }
+
+  .content-son {
+    font-size: 14px;
   }
 }
 
@@ -786,7 +790,6 @@ article .aster {
   }
 
   /**/
-
   #menu-icon {
     font-size: 18px;
   }
@@ -840,6 +843,11 @@ article .aster {
   .title {
     font-size: 33px;
     text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .margin454 {
+    margin: 0px 0px 15px;
   }
 
   .who-are .content {
@@ -859,14 +867,14 @@ article .aster {
     justify-self: center;
   }
 
-  /* .who-are .team .member img {
-    width: 50%;
-  } */
-
   .who-are .team .member h3 {
     margin: 15px 0 5px;
   }
   /**/
+  .projects .subtitle {
+    text-align: center;
+    font-size: 12px;
+  }
   .projects .content {
     display: initial;
   }
@@ -875,8 +883,36 @@ article .aster {
     margin: 10px 0px;
   }
 
-  /**/
+  .first-div {
+    gap: 10px;
+  }
+  article .aster {
+    font-size: 25px;
+  }
 
+
+  .logos-slide article {
+    width: 380px;
+  }
+
+  .content-son p {
+    padding: 10px 7px;
+    max-width: 330px;
+  }
+
+  .last-article .content-son h3 {
+    font-size: 12px;
+  }
+
+  .last-article .content-son h3 {
+    font-size: 12px;
+  }
+
+  .last-article .content-son img {
+    margin-top: 1px;
+  }
+  
+  /**/
   .how-work .content {
     font-size: 16px;
   }
